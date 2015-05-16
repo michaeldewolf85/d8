@@ -1,2 +1,4 @@
 # Vagrant session files.
 .vagrant
+# D8 docroot
+docroot
