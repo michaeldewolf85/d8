@@ -3,11 +3,10 @@
 # Bypass all configuration prompts.
 export DEBIAN_FRONTEND=noninteractive
 
-apt-get update
-
 #################
 # Linux Goodies #
 #################
+apt-get update
 apt-get install -y curl
 
 ##########
@@ -42,5 +41,6 @@ service apache2 restart
 #########
 curl -sS https://getcomposer.org/installer | php
 mv composer.phar /usr/local/bin/composer
-export PATH="$HOME/.composer/vendor/bin:$PATH"
+echo 'export PATH="$HOME/.composer/vendor/bin:$PATH"' >> ~/.bashrc
+composer global update
 composer global require drush/drush:dev-master
