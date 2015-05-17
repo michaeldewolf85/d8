@@ -7,7 +7,7 @@ export DEBIAN_FRONTEND=noninteractive
 # Linux Goodies #
 #################
 apt-get update
-apt-get install -y curl git-core
+apt-get install -y curl git-core python-software-properties
 
 ##########
 # Apache #
@@ -25,6 +25,7 @@ mysql -uroot -e "create database d8"
 #######
 # PHP #
 #######
+sudo add-apt-repository -y ppa:ondrej/php5
 apt-get install -y php5 libapache2-mod-php5 php5-mysql
 
 #################
