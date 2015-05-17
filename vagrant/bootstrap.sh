@@ -7,7 +7,7 @@ export DEBIAN_FRONTEND=noninteractive
 # Linux Goodies #
 #################
 apt-get update
-apt-get install -y curl
+apt-get install -y curl git-core
 
 ##########
 # Apache #
@@ -40,7 +40,7 @@ service apache2 restart
 # Drush #
 #########
 curl -sS https://getcomposer.org/installer | php
-mv composer.phar /usr/local/bin/composer
-echo 'export PATH="$HOME/.composer/vendor/bin:$PATH"' >> ~/.bashrc
-composer global update
-composer global require drush/drush:dev-master
+mv /home/vagrant/composer.phar /usr/local/bin/composer
+su - vagrant -c 'composer global require drush/drush:dev-master'
+echo 'export PATH="$HOME/.composer/vendor/bin:$PATH"' >> /home/vagrant/.bashrc
+
