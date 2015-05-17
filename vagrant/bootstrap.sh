@@ -20,6 +20,7 @@ a2enmod ssl
 # MySQL #
 #########
 apt-get install -y mysql-server
+mysql -uroot -e "create database d8"
 
 #######
 # PHP #
