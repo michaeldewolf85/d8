@@ -2,6 +2,7 @@ core: 8.x
 api: 2
 projects:
   drupal:
+    overwrite: TRUE
     download:
       type: git
       url: http://git.drupal.org/project/drupal.git
