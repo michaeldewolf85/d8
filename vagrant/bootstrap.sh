@@ -14,7 +14,7 @@ apt-get install -y curl git-core python-software-properties
 ##########
 apt-get install apache2 -y
 echo "ServerName localhost" | sudo tee /etc/apache2/httpd.conf
-a2enmod ssl
+a2enmod ssl rewrite
 
 #########
 # MySQL #
@@ -46,4 +46,4 @@ curl -sS https://getcomposer.org/installer | php
 mv /home/vagrant/composer.phar /usr/local/bin/composer
 su - vagrant -c 'composer global require drush/drush:dev-master'
 echo 'export PATH="$HOME/.composer/vendor/bin:$PATH"' >> /home/vagrant/.bashrc
-
+sed -i '/DocumentRoot \/var\/www\/html\/d8/a \t<directory /var/www/html/d8/>\n\tAllowOverride All\n\t</directory>' /etc/apache2/sites-available/d8.conf
