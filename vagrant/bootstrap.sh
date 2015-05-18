@@ -27,15 +27,16 @@ mysql -uroot -e "create database d8"
 #######
 add-apt-repository -y ppa:ondrej/php5
 apt-get update
-apt-get install -y php5 libapache2-mod-php5 php5-mysql
+apt-get install -y php5 libapache2-mod-php5 php5-mysql php5-gd
 
 #################
 # Virtual Hosts #
 #################
-cp /etc/apache2/sites-available/default /etc/apache2/sites-available/d8
-cp /etc/apache2/sites-available/default-ssl /etc/apache2/sites-available/d8-ssl
-sed -i '/ServerAdmin webmaster@localhost/a\\tServerName sbx.d8.dev' /etc/apache2/sites-available/d8*
-sed -i 's/\/var\/www/\/vagrant\/docroot/g' /etc/apache2/sites-available/d8*
+cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/d8.conf
+cp /etc/apache2/sites-available/default-ssl.conf /etc/apache2/sites-available/d8-ssl.conf
+sed -i 's/#ServerName www.example.com/ServerName sbx.d8.dev/g' /etc/apache2/sites-available/d8*
+sed -i 's/\/var\/www\/html/\/var\/www\/html\/d8/g' /etc/apache2/sites-available/d8*
+ln -s /vagrant/docroot /var/www/html/d8
 a2ensite d8 d8-ssl
 service apache2 restart
 
