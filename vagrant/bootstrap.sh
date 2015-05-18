@@ -36,7 +36,6 @@ cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/d8
 cp /etc/apache2/sites-available/default-ssl.conf /etc/apache2/sites-available/d8-ssl.conf
 sed -i 's/#ServerName www.example.com/ServerName sbx.d8.dev/g' /etc/apache2/sites-available/d8*
 sed -i 's/\/var\/www\/html/\/var\/www\/html\/d8/g' /etc/apache2/sites-available/d8*
-ln -s /vagrant/docroot /var/www/html/d8
 a2ensite d8 d8-ssl
 service apache2 restart
 
